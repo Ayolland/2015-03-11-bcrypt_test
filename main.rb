@@ -21,8 +21,14 @@ end
 #   user.
 
 get "/" do
-  erb :login
+  if session[:name]
+    redirect to("/#{session[:name]}/")
+  else
+    redirect to("/login")
+  end
 end
+
+# ^ Main route.  Redirects based on if user has a session already open. ^
 
 get "/login" do
   erb :login
