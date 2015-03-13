@@ -1,12 +1,18 @@
 <%= @display_msg if @display_msg != nil %>
 <h1>HEY: LOGIN, DUDETTE!</h1>
-<form action="javascript:void(0)" method="post" id="user_form">
-  <h2>Username:</h2><input type="text" id="username" name="username"><br>
+<form action="/verify" method="post" id="user_form">
+  <h2>Username:</h2><input type="text" id="name" name="name"><br>
   <h2>Password:</h2><input type="password" id="password" name="password">
   <br>
   <br>
   <button id="login">LOGIN</button> 
-  <button id="new_user">CREATE NEW USER</button>
-<!--These buttons do nothing here, but are used in buttons.js -->
 </form>
-<%  %>
+<br>
+<h3>OR MAKE A USERNAME</h3>
+<form action="/new_user" method="post" id="user_form">
+  <h2>Username:</h2><input type="text" id="name" name="name"><br>
+  <h2>Password:</h2><input type="password" id="password" name="password">
+  <br>
+  <br>
+  <button id="login">CREATE NEW USER</button> 
+</form>

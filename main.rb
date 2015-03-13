@@ -66,7 +66,7 @@ post "/new_user" do
   # ^ By converting it all to lowercase, username and passwords are not case
   #   sensitive, and are harder to get wrong by mistake.
   binding.pry
-  redirect to ("username_taken") if User.find_by name: params[:name] != nil
+  redirect to ("username_taken") if (User.find_by name: params[:name]) != nil
   # ^ User.find_by uses ActiveRecords to return the FIRST User with a name field
   #   that matches params[:name]. If a user with that name already exists, and a
   #   new user is created, User.find_by will NEVER find the second user. So we
@@ -80,8 +80,6 @@ post "/new_user" do
 end
 
 post "/verify" do
-  binding.pry
-  # ^ Using post to hide password data.
   all_in_lowercase(params) # this a method in the helpers module below.
   # ^ You have to convert it to lowercase when checking, too.
   check_me = User.find_by name: params[:name]
